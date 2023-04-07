@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marhaban Ramadhan</title>
+    <style>
+        #btnMau {
+            width: 100px;
+            height: 60px;
+            outline: none;
+            border: none;
+            background-color: rgb(230, 59, 59);
+            color: white;
+            cursor: pointer;
+            margin-right: 80px;
+        }
+
+        #btnMau:hover {
+            background-color: rgb(231, 9, 9);
+        }
+
+        #btnGamau {
+            width: 100px;
+            height: 60px;
+            outline: none;
+            border: none;
+            background-color: rgb(59, 230, 88);
+            color: white;
+            cursor: pointer;
+        }
+
+        #btnGamau:hover {
+            background-color: rgb(21, 240, 39);
+        }
+    </style>
+</head>
+
+<body>
+    <div style="margin-bottom: 10px;">
+        <span>
+            <span>Tanggal:</span>
+            <span id="tanggal"></span>
+        </span>
+    </div>
+    <div style="margin-bottom: 10px;">
+        <span>
+            <span style="font-size: 18px;">Sekarang Jam: </span>
+            <span style="font-size: 18px;font-weight: bold;" id="jam"></span>
+        </span>
+    </div>
+    <img src="https://media.tenor.com/YHCeVRSUF98AAAAC/ramadan-ramadan-mubarak.gif" style="width: 300px;" alt="gambar">
+
+    <h1 class="content">Hayu ah godin ?</h1>
+    <button id="btnGamau" onclick='alert("Kamu anak sholeh")'>Engga Ah</button>
+    <button id="btnMau" onclick="gamau(this)" style="position:absolute">Hayu</button>
+
+</body>
+<script src="https://momentjs.com/downloads/moment.js"></script>
+<script>
+    var n = new Date();
+    n.toISOString();
+    var date = moment(n.toISOString()).format('DD MMMM YYYY');
+    var time = moment(n.toISOString()).format('HH:mm');
+    document.getElementById("tanggal").innerHTML = date;
+    document.getElementById("jam").innerHTML = time;
+
+    var click = 0
+
+    function gamau(id) {
+        var mau = document.getElementById('btnMau');
+        if (date < '18:00') {
+            var i = Math.floor(Math.random() * 300) + 1;
+            var j = Math.floor(Math.random() * 100) + mau.offsetTop;
+            id.style.left = i + 'px';
+            id.style.top = j + 'px'
+            click += 1
+
+            if (click === 5) {
+                alert("Woy maghrib masih lama, ini masih jam " + time)
+            }
+        } else {
+            alert("Selamat berbuka puasa")
+        }
+    }
+</script>
+
+</html>
